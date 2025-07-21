@@ -24,7 +24,7 @@
       border-radius: 10px;
       display: flex;
       overflow: hidden;
-      gap: 20px; /* الفراغ بين القسمين */
+      gap: 20px;
     }
 
     .right, .left {
@@ -34,11 +34,13 @@
     .right {
       background-color: #fefefe;
       border-right: 1px solid #ddd;
+      min-width: 280px;
     }
 
     .left {
-      min-width: 280px;
       background: #fafafa;
+      border: 1px solid #ddd; /* الإطار الخفيف */
+      border-radius: 8px;
     }
 
     .header {
@@ -78,11 +80,12 @@
     .info-box p {
       margin: 10px 0;
       font-size: 15px;
+      color: #888; /* لون خفيف افتراضي */
     }
 
-    .info-box strong {
-      display: inline-block;
-      width: 100px;
+    .info-box .bold {
+      color: #222; /* لون أغمق للي طلبته */
+      font-weight: bold;
     }
 
     .final-result {
@@ -92,6 +95,7 @@
       background-color: #ffe0e0;
       width: fit-content;
       border-radius: 5px;
+      margin-top: 10px;
     }
 
     .btn {
@@ -124,6 +128,13 @@
       margin-bottom: 25px;
       line-height: 1.6;
     }
+
+    .table-title {
+      font-weight: bold;
+      font-size: 16px;
+      margin-bottom: 10px;
+      padding-right: 5px;
+    }
   </style>
 </head>
 <body>
@@ -138,13 +149,13 @@
           الدور الأول 2025/2024
         </div>
         <div class="info-box">
-          <p><strong>الاسم الرباعي:</strong> كرار حيدر فليح محسن</p>
-          <p><strong>اسم المدرسة:</strong> اعدادية كصيبة للبنين</p>
+          <p><strong>الاسم الرباعي:</strong> <span class="bold">كرار حيدر فليح محسن</span></p>
+          <p><strong>اسم المدرسة:</strong> <span class="bold">اعدادية كصيبة للبنين</span></p>
           <p><strong>المديرية:</strong> واسط</p>
           <p><strong>الفرع:</strong> علمي</p>
           <p><strong>المجموعة:</strong> 0</p>
           <p><strong>المعدل:</strong> %0</p>
-          <div class="final-result">معيد</div>
+          <div class="final-result bold">معيد</div>
           <button class="btn">تسجيل الخروج</button>
         </div>
       </div>
@@ -155,11 +166,11 @@
         <div class="note">
           ملاحظة: هذه النتيجة لا تُعد وثيقة رسمية، يجب الاعتماد على الوثائق الورقية الصادرة من الوزارة.
         </div>
+
+        <!-- عنوان الجدول -->
+        <div class="table-title">المادة</div>
+
         <table>
-          <tr>
-            <th>المادة</th>
-            <th>الدرجة</th>
-          </tr>
           <tr><td>الإسلامية</td><td>86</td></tr>
           <tr><td>العربية</td><td>78</td></tr>
           <tr class="highlight"><td>الإنجليزية</td><td>م</td></tr>
