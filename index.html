@@ -24,18 +24,19 @@
       border-radius: 10px;
       display: flex;
       overflow: hidden;
+      gap: 20px; /* الفراغ بين القسمين */
     }
 
-    .left, .right {
+    .right, .left {
       padding: 30px;
     }
 
-    .left {
+    .right {
       background-color: #fefefe;
-      border-left: 1px solid #ddd;
+      border-right: 1px solid #ddd;
     }
 
-    .right {
+    .left {
       min-width: 280px;
       background: #fafafa;
     }
@@ -108,38 +109,31 @@
       font-size: 12px;
       color: #777;
     }
+
+    .top-title {
+      font-weight: bold;
+      font-size: 16px;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .title-head {
+      font-weight: bold;
+      font-size: 15px;
+      text-align: center;
+      margin-bottom: 25px;
+      line-height: 1.6;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="result-box">
 
-      <!-- الجزء الأيسر (الجدول) -->
-      <div class="left">
-        <div class="header">معلومات النتيجة</div>
-        <div class="note">
-          ملاحظة: هذه النتيجة لا تُعد وثيقة رسمية، يجب الاعتماد على الوثائق الورقية الصادرة من الوزارة.
-        </div>
-        <table>
-          <tr>
-            <th>المادة</th>
-            <th>الدرجة</th>
-          </tr>
-          <tr class="highlight"><td>الإسلامية</td><td>86</td></tr>
-          <tr class="highlight"><td>العربية</td><td>78</td></tr>
-          <tr class="highlight"><td>الإنجليزية</td><td>م</td></tr>
-          <tr class="highlight"><td>الأحياء</td><td>95</td></tr>
-          <tr class="highlight"><td>الرياضيات</td><td>90</td></tr>
-          <tr class="highlight"><td>الكيمياء</td><td>84</td></tr>
-          <tr class="highlight"><td>الفيزياء</td><td>م</td></tr>
-        </table>
-      </div>
-
-      <!-- الجزء الأيمن (البيانات) -->
+      <!-- الجهة اليمنى: المعلومات -->
       <div class="right">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Emblem_of_Iraq.svg/120px-Emblem_of_Iraq.svg.png" width="60" style="margin-bottom: 10px;">
-        <div style="font-weight: bold;">جمهورية العراق<br>وزارة التربية</div>
-        <div style="margin-top: 10px; font-size: 15px;">
+        <div class="top-title">جمهورية العراق<br>وزارة التربية</div>
+        <div class="title-head">
           المنظمة العامة للتحديات العامة<br>
           الدور الأول 2025/2024
         </div>
@@ -155,8 +149,30 @@
         </div>
       </div>
 
+      <!-- الجهة اليسرى: المواد -->
+      <div class="left">
+        <div class="header">معلومات النتيجة</div>
+        <div class="note">
+          ملاحظة: هذه النتيجة لا تُعد وثيقة رسمية، يجب الاعتماد على الوثائق الورقية الصادرة من الوزارة.
+        </div>
+        <table>
+          <tr>
+            <th>المادة</th>
+            <th>الدرجة</th>
+          </tr>
+          <tr><td>الإسلامية</td><td>86</td></tr>
+          <tr><td>العربية</td><td>78</td></tr>
+          <tr class="highlight"><td>الإنجليزية</td><td>م</td></tr>
+          <tr><td>الأحياء</td><td>95</td></tr>
+          <tr><td>الرياضيات</td><td>90</td></tr>
+          <tr><td>الكيمياء</td><td>84</td></tr>
+          <tr class="highlight"><td>الفيزياء</td><td>م</td></tr>
+        </table>
+      </div>
+
     </div>
   </div>
+
   <div class="footer">
     جميع الحقوق محفوظة © 2025 وزارة التربية العراقية
   </div>
