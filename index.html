@@ -3,78 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نتائج الطلاب</title>
+    <title>نتائج الطلاب - وزارة التربية العراقية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        @font-face {
-            font-family: 'Traditional Arabic';
-            src: url('https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;700&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Noto Naskh Arabic', serif;
         }
         
         body {
-            font-family: 'Traditional Arabic', 'Arial', sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f5f5f5;
+            background-color: #f0f0f0;
             color: #000;
-            line-height: 1.6;
-        }
-        
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: #fff;
+            line-height: 1.7;
             padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border: 1px solid #ddd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
         
-        h1 {
+        .result-container {
+            width: 100%;
+            max-width: 800px;
+            background-color: #fff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ddd;
+            padding: 30px;
+            position: relative;
+        }
+        
+        .result-header {
             text-align: center;
-            font-size: 24px;
-            margin-bottom: 20px;
-            font-weight: bold;
+            margin-bottom: 25px;
+        }
+        
+        .result-header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
         }
         
         .note {
             text-align: center;
-            font-size: 14px;
-            margin-bottom: 20px;
+            font-size: 16px;
             color: #555;
+            margin-bottom: 30px;
+            padding: 0 20px;
+            line-height: 1.6;
         }
         
-        h2 {
-            font-size: 20px;
-            border-bottom: 1px solid #000;
-            padding-bottom: 5px;
-            margin-top: 30px;
-            font-weight: bold;
+        .section-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin: 25px 0 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #000;
         }
         
         .materials {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
             margin: 20px 0;
         }
         
-        .material {
+        .material-item {
             display: flex;
             justify-content: space-between;
-            padding: 5px 0;
-            border-bottom: 1px dashed #ddd;
+            padding: 6px 0;
+            border-bottom: 1px dashed #ccc;
         }
         
         .material-name {
-            font-weight: bold;
+            font-weight: 500;
+            font-size: 18px;
         }
         
         .material-score {
-            font-weight: bold;
+            font-weight: 600;
+            font-size: 18px;
         }
         
-        .separator {
-            border-top: 1px solid #000;
-            margin: 20px 0;
+        .divider {
+            height: 1px;
+            background-color: #000;
+            margin: 30px 0;
+            width: 100%;
         }
         
         .deductions {
@@ -84,161 +98,203 @@
         .deduction-item {
             display: flex;
             justify-content: space-between;
-            padding: 5px 0;
+            padding: 6px 0;
         }
         
-        .header {
-            text-align: center;
-            margin: 30px 0;
-        }
-        
-        .ministry {
+        .deduction-name {
+            font-weight: 500;
             font-size: 18px;
-            font-weight: bold;
         }
         
-        .organization {
-            font-size: 16px;
-            margin: 10px 0;
+        .deduction-value {
+            font-weight: 500;
+            font-size: 18px;
+            color: #777;
         }
         
-        .exam-info {
-            font-size: 14px;
-            margin-bottom: 20px;
-        }
-        
-        .student-info {
-            margin: 30px 0;
+        .ministry-section {
             text-align: center;
+            margin: 35px 0;
         }
         
-        .student-name {
-            font-size: 20px;
-            font-weight: bold;
+        .ministry-title {
+            font-size: 26px;
+            font-weight: 700;
             margin-bottom: 10px;
         }
         
-        .school-info, .branch-info {
-            font-size: 16px;
+        .organization-title {
+            font-size: 22px;
+            font-weight: 600;
+            margin: 20px 0 15px;
+        }
+        
+        .exam-info {
+            font-size: 18px;
             margin: 5px 0;
         }
         
-        .percentage {
-            font-size: 16px;
-            margin: 10px 0;
-        }
-        
-        .logout {
-            font-size: 14px;
-            margin-top: 10px;
-        }
-        
-        .study-info {
-            margin: 20px 0;
-        }
-        
-        .study-item {
-            margin: 5px 0;
-        }
-        
-        .footer {
+        .student-info {
             text-align: center;
-            margin-top: 30px;
-            font-size: 12px;
-            color: #555;
+            margin: 35px 0;
+        }
+        
+        .student-name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .school-info {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 8px 0;
+        }
+        
+        .branch-info {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 15px 0;
+        }
+        
+        .result-value {
+            font-size: 18px;
+            margin: 8px 0;
         }
         
         .zero {
-            color: #999;
+            color: #777;
+        }
+        
+        .logout {
+            font-size: 18px;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+        
+        .study-info {
+            margin: 25px 0;
+        }
+        
+        .study-item {
+            font-size: 18px;
+            font-weight: 600;
+            margin: 8px 0;
+        }
+        
+        .copyright {
+            text-align: center;
+            font-size: 16px;
+            color: #555;
+            margin-top: 40px;
+            padding-top: 15px;
+            border-top: 1px solid #ddd;
+        }
+        
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 120px;
+            font-weight: 700;
+            color: rgba(0, 0, 0, 0.03);
+            z-index: -1;
+            user-select: none;
+            white-space: nowrap;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>معلومات النتيجة</h1>
+    <div class="result-container">
+        <div class="watermark">وزارة التربية</div>
+        
+        <div class="result-header">
+            <h1>معلومات النتيجة</h1>
+        </div>
         
         <div class="note">
             ملاحظة: هذه النتيجة لا تُعد وثيقة رسمية، ويجب الاعتماد على الوثائق الورقية الصادرة من الزوارة.
         </div>
         
-        <h2>المادة</h2>
+        <h2 class="section-title">المادة</h2>
         <div class="materials">
-            <div class="material">
+            <div class="material-item">
                 <span class="material-name">الاستعمالية</span>
                 <span class="material-score">86</span>
             </div>
-            <div class="material">
+            <div class="material-item">
                 <span class="material-name">العربية</span>
                 <span class="material-score">78</span>
             </div>
         </div>
         
-        <div class="separator"></div>
+        <div class="divider"></div>
         
-        <h2>التكفيفات</h2>
+        <h2 class="section-title">التكفيفات</h2>
         <div class="deductions">
             <div class="deduction-item">
-                <span>الإجابة</span>
-                <span class="zero">صفر</span>
+                <span class="deduction-name">الإجابة</span>
+                <span class="deduction-value">صفر</span>
             </div>
             <div class="deduction-item">
-                <span>الرحلة</span>
-                <span class="zero">صفر</span>
+                <span class="deduction-name">الرحلة</span>
+                <span class="deduction-value">صفر</span>
             </div>
             <div class="deduction-item">
-                <span>الأهداف</span>
-                <span class="zero">صفر</span>
+                <span class="deduction-name">الأهداف</span>
+                <span class="deduction-value">صفر</span>
             </div>
             <div class="deduction-item">
-                <span>الكيمياء</span>
-                <span class="zero">صفر</span>
+                <span class="deduction-name">الكيمياء</span>
+                <span class="deduction-value">صفر</span>
             </div>
             <div class="deduction-item">
-                <span>الفيزياء</span>
-                <span class="zero">صفر</span>
+                <span class="deduction-name">الفيزياء</span>
+                <span class="deduction-value">صفر</span>
             </div>
             <div class="deduction-item">
-                <span></span>
-                <span class="zero">صفر</span>
+                <span class="deduction-name"></span>
+                <span class="deduction-value">صفر</span>
             </div>
         </div>
         
-        <div class="header">
-            <div class="ministry">جمهورية العراق</div>
-            <div class="ministry">وزارة التربية</div>
+        <div class="divider"></div>
+        
+        <div class="ministry-section">
+            <div class="ministry-title">جمهورية العراق</div>
+            <div class="ministry-title">وزارة التربية</div>
             
-            <div class="separator"></div>
-            
-            <div class="organization">المنظمة العاملية للتحديات العامة</div>
+            <div class="organization-title">المنظمة العاملية للتحديات العامة</div>
             <div class="exam-info">الدور الأول</div>
             <div class="exam-info">2025/2024</div>
         </div>
         
-        <div class="separator"></div>
+        <div class="divider"></div>
         
         <div class="student-info">
             <div class="student-name">كرار حيدر فليج محسن</div>
             <div class="school-info">إعدادية كصبية للبنين</div>
             <div class="school-info">واسط</div>
             <div class="branch-info">علمي</div>
-            <div class="percentage zero">0</div>
-            <div class="percentage zero">%0</div>
-            <div class="percentage">مبي</div>
+            <div class="result-value zero">0</div>
+            <div class="result-value zero">%0</div>
+            <div class="result-value">مبي</div>
             <div class="logout">تسجيل الخروج (٥)</div>
         </div>
         
-        <div class="separator"></div>
+        <div class="divider"></div>
         
         <div class="study-info">
-            <div class="study-item"><strong>اسم الدراسة</strong></div>
-            <div class="study-item"><strong>الدرسة</strong></div>
-            <div class="study-item"><strong>الفرع</strong></div>
-            <div class="study-item"><strong>المجموعة</strong></div>
-            <div class="study-item"><strong>العدل</strong></div>
-            <div class="study-item"><strong>النتيجة النهائية</strong></div>
+            <div class="study-item">اسم الدراسة</div>
+            <div class="study-item">الدرسة</div>
+            <div class="study-item">الفرع</div>
+            <div class="study-item">المجموعة</div>
+            <div class="study-item">العدل</div>
+            <div class="study-item">النتيجة النهائية</div>
         </div>
         
-        <div class="footer">
+        <div class="copyright">
             جميع الحقوق محفوظة © 2025. وزارة التربية المراقبة
         </div>
     </div>
