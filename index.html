@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>نتائج الطلاب - وزارة التربية العراقية</title>
+    <title>نتيجة الطالب - وزارة التربية العراقية</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -14,7 +14,7 @@
         }
         
         body {
-            background-color: #f0f0f0;
+            background: linear-gradient(135deg, #e6e6e6, #f5f5f5);
             color: #000;
             line-height: 1.7;
             padding: 20px;
@@ -28,15 +28,17 @@
             width: 100%;
             max-width: 800px;
             background-color: #fff;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            border: 1px solid #ddd;
-            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            border: 1px solid #d0d0d0;
+            padding: 35px 40px;
             position: relative;
+            border-radius: 3px;
         }
         
         .result-header {
             text-align: center;
             margin-bottom: 25px;
+            padding-bottom: 10px;
         }
         
         .result-header h1 {
@@ -44,6 +46,7 @@
             font-weight: 700;
             margin-bottom: 15px;
             letter-spacing: -0.5px;
+            text-shadow: 1px 1px 1px rgba(0,0,0,0.1);
         }
         
         .note {
@@ -53,6 +56,10 @@
             margin-bottom: 30px;
             padding: 0 20px;
             line-height: 1.6;
+            background-color: #f9f9f9;
+            border: 1px dashed #ccc;
+            padding: 12px;
+            border-radius: 5px;
         }
         
         .section-title {
@@ -61,6 +68,17 @@
             margin: 25px 0 15px;
             padding-bottom: 8px;
             border-bottom: 2px solid #000;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: "";
+            position: absolute;
+            bottom: -3px;
+            right: 0;
+            width: 120px;
+            height: 3px;
+            background: #c00;
         }
         
         .materials {
@@ -70,24 +88,35 @@
         .material-item {
             display: flex;
             justify-content: space-between;
-            padding: 6px 0;
+            padding: 8px 0;
             border-bottom: 1px dashed #ccc;
+            font-size: 19px;
         }
         
         .material-name {
             font-weight: 500;
-            font-size: 18px;
+            position: relative;
+            padding-right: 25px;
+        }
+        
+        .material-name::before {
+            content: "-";
+            position: absolute;
+            right: 0;
+            top: 0;
+            font-weight: bold;
         }
         
         .material-score {
             font-weight: 600;
-            font-size: 18px;
+            min-width: 50px;
+            text-align: left;
         }
         
         .divider {
             height: 1px;
-            background-color: #000;
-            margin: 30px 0;
+            background: linear-gradient(to right, transparent, #000, transparent);
+            margin: 35px 0;
             width: 100%;
         }
         
@@ -98,88 +127,150 @@
         .deduction-item {
             display: flex;
             justify-content: space-between;
-            padding: 6px 0;
+            padding: 8px 0;
+            font-size: 19px;
         }
         
         .deduction-name {
             font-weight: 500;
-            font-size: 18px;
+            position: relative;
+            padding-right: 25px;
+        }
+        
+        .deduction-name::before {
+            content: "-";
+            position: absolute;
+            right: 0;
+            top: 0;
+            font-weight: bold;
         }
         
         .deduction-value {
             font-weight: 500;
-            font-size: 18px;
             color: #777;
+            min-width: 50px;
+            text-align: left;
         }
         
         .ministry-section {
             text-align: center;
-            margin: 35px 0;
+            margin: 40px 0;
+            padding: 10px 0;
+            background: linear-gradient(to bottom, #f0f0f0, #fff);
+            border: 1px solid #e0e0e0;
+            border-radius: 5px;
         }
         
         .ministry-title {
             font-size: 26px;
             font-weight: 700;
-            margin-bottom: 10px;
+            margin-bottom: 5px;
+            color: #003366;
         }
         
         .organization-title {
             font-size: 22px;
             font-weight: 600;
             margin: 20px 0 15px;
+            color: #006633;
         }
         
         .exam-info {
-            font-size: 18px;
-            margin: 5px 0;
+            font-size: 19px;
+            margin: 8px 0;
+            font-weight: 500;
         }
         
         .student-info {
             text-align: center;
-            margin: 35px 0;
+            margin: 40px 0;
+            padding: 20px;
+            background: #f8f8f8;
+            border: 1px solid #eaeaea;
+            border-radius: 8px;
+            position: relative;
+        }
+        
+        .student-info::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, #c00, #003366);
+            border-radius: 8px 8px 0 0;
         }
         
         .student-name {
             font-size: 24px;
             font-weight: 700;
             margin-bottom: 15px;
+            color: #003366;
+            text-decoration: underline;
+            text-underline-offset: 5px;
+            text-decoration-color: #c00;
         }
         
         .school-info {
             font-size: 20px;
             font-weight: 600;
             margin: 8px 0;
+            color: #006633;
         }
         
         .branch-info {
             font-size: 20px;
             font-weight: 600;
             margin: 15px 0;
+            padding: 8px 0;
+            background-color: #e6f7ff;
+            border-radius: 5px;
         }
         
         .result-value {
-            font-size: 18px;
-            margin: 8px 0;
+            font-size: 19px;
+            margin: 10px 0;
+            font-weight: 500;
         }
         
         .zero {
             color: #777;
+            font-weight: 600;
         }
         
         .logout {
-            font-size: 18px;
+            font-size: 19px;
             font-weight: 600;
-            margin-top: 15px;
+            margin-top: 20px;
+            color: #c00;
+            text-decoration: underline;
+            cursor: pointer;
         }
         
         .study-info {
             margin: 25px 0;
+            padding: 15px;
+            background-color: #f0f8ff;
+            border-radius: 8px;
+            border: 1px solid #d1e7ff;
         }
         
         .study-item {
-            font-size: 18px;
+            font-size: 19px;
             font-weight: 600;
-            margin: 8px 0;
+            margin: 12px 0;
+            padding-right: 20px;
+            position: relative;
+        }
+        
+        .study-item::before {
+            content: "-";
+            position: absolute;
+            right: 0;
+            top: 0;
+            font-weight: bold;
+            color: #c00;
         }
         
         .copyright {
@@ -188,26 +279,54 @@
             color: #555;
             margin-top: 40px;
             padding-top: 15px;
-            border-top: 1px solid #ddd;
+            border-top: 2px dashed #ccc;
+            font-weight: 500;
         }
         
         .watermark {
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 120px;
+            transform: translate(-50%, -50%) rotate(-30deg);
+            font-size: 140px;
             font-weight: 700;
             color: rgba(0, 0, 0, 0.03);
             z-index: -1;
             user-select: none;
             white-space: nowrap;
+            text-shadow: 3px 3px 5px rgba(0,0,0,0.05);
+        }
+        
+        .official-stamp {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            width: 120px;
+            height: 120px;
+            border: 3px solid #c00;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0.7;
+        }
+        
+        .stamp-text {
+            font-size: 16px;
+            font-weight: bold;
+            color: #c00;
+            transform: rotate(-15deg);
+            text-align: center;
+            line-height: 1.4;
         }
     </style>
 </head>
 <body>
     <div class="result-container">
         <div class="watermark">وزارة التربية</div>
+        <div class="official-stamp">
+            <div class="stamp-text">وزارة التربية<br>العراقية<br>رسمي</div>
+        </div>
         
         <div class="result-header">
             <h1>معلومات النتيجة</h1>
@@ -220,12 +339,32 @@
         <h2 class="section-title">المادة</h2>
         <div class="materials">
             <div class="material-item">
-                <span class="material-name">الاستعمالية</span>
+                <span class="material-name">الإسلامية</span>
                 <span class="material-score">86</span>
             </div>
             <div class="material-item">
                 <span class="material-name">العربية</span>
                 <span class="material-score">78</span>
+            </div>
+            <div class="material-item">
+                <span class="material-name">الإنجليزية</span>
+                <span class="material-score">م</span>
+            </div>
+            <div class="material-item">
+                <span class="material-name">الأحياء</span>
+                <span class="material-score">95</span>
+            </div>
+            <div class="material-item">
+                <span class="material-name">الرياضيات</span>
+                <span class="material-score">90</span>
+            </div>
+            <div class="material-item">
+                <span class="material-name">الكيمياء</span>
+                <span class="material-score">84</span>
+            </div>
+            <div class="material-item">
+                <span class="material-name">الفيزياء</span>
+                <span class="material-score">م</span>
             </div>
         </div>
         
@@ -273,13 +412,13 @@
         <div class="divider"></div>
         
         <div class="student-info">
-            <div class="student-name">كرار حيدر فليج محسن</div>
-            <div class="school-info">إعدادية كصبية للبنين</div>
+            <div class="student-name">كرار حيدر فليح محسن</div>
+            <div class="school-info">إعدادية كصيبة للبنين</div>
             <div class="school-info">واسط</div>
             <div class="branch-info">علمي</div>
             <div class="result-value zero">0</div>
             <div class="result-value zero">%0</div>
-            <div class="result-value">مبي</div>
+            <div class="result-value" style="color: #c00; font-weight: 700;">معيد</div>
             <div class="logout">تسجيل الخروج (٥)</div>
         </div>
         
