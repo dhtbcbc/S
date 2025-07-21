@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نتائج الطلاب</title>
+    <style>
+        @font-face {
+            font-family: 'Traditional Arabic';
+            src: url('https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;700&display=swap');
+        }
+        
+        body {
+            font-family: 'Traditional Arabic', 'Arial', sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #000;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ddd;
+        }
+        
+        h1 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        
+        .note {
+            text-align: center;
+            font-size: 14px;
+            margin-bottom: 20px;
+            color: #555;
+        }
+        
+        h2 {
+            font-size: 20px;
+            border-bottom: 1px solid #000;
+            padding-bottom: 5px;
+            margin-top: 30px;
+            font-weight: bold;
+        }
+        
+        .materials {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .material {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+            border-bottom: 1px dashed #ddd;
+        }
+        
+        .material-name {
+            font-weight: bold;
+        }
+        
+        .material-score {
+            font-weight: bold;
+        }
+        
+        .separator {
+            border-top: 1px solid #000;
+            margin: 20px 0;
+        }
+        
+        .deductions {
+            margin: 20px 0;
+        }
+        
+        .deduction-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+        }
+        
+        .header {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .ministry {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        
+        .organization {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+        
+        .exam-info {
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        
+        .student-info {
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .student-name {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .school-info, .branch-info {
+            font-size: 16px;
+            margin: 5px 0;
+        }
+        
+        .percentage {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+        
+        .logout {
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        
+        .study-info {
+            margin: 20px 0;
+        }
+        
+        .study-item {
+            margin: 5px 0;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 12px;
+            color: #555;
+        }
+        
+        .zero {
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>معلومات النتيجة</h1>
+        
+        <div class="note">
+            ملاحظة: هذه النتيجة لا تُعد وثيقة رسمية، ويجب الاعتماد على الوثائق الورقية الصادرة من الزوارة.
+        </div>
+        
+        <h2>المادة</h2>
+        <div class="materials">
+            <div class="material">
+                <span class="material-name">الاستعمالية</span>
+                <span class="material-score">86</span>
+            </div>
+            <div class="material">
+                <span class="material-name">العربية</span>
+                <span class="material-score">78</span>
+            </div>
+        </div>
+        
+        <div class="separator"></div>
+        
+        <h2>التكفيفات</h2>
+        <div class="deductions">
+            <div class="deduction-item">
+                <span>الإجابة</span>
+                <span class="zero">صفر</span>
+            </div>
+            <div class="deduction-item">
+                <span>الرحلة</span>
+                <span class="zero">صفر</span>
+            </div>
+            <div class="deduction-item">
+                <span>الأهداف</span>
+                <span class="zero">صفر</span>
+            </div>
+            <div class="deduction-item">
+                <span>الكيمياء</span>
+                <span class="zero">صفر</span>
+            </div>
+            <div class="deduction-item">
+                <span>الفيزياء</span>
+                <span class="zero">صفر</span>
+            </div>
+            <div class="deduction-item">
+                <span></span>
+                <span class="zero">صفر</span>
+            </div>
+        </div>
+        
+        <div class="header">
+            <div class="ministry">جمهورية العراق</div>
+            <div class="ministry">وزارة التربية</div>
+            
+            <div class="separator"></div>
+            
+            <div class="organization">المنظمة العاملية للتحديات العامة</div>
+            <div class="exam-info">الدور الأول</div>
+            <div class="exam-info">2025/2024</div>
+        </div>
+        
+        <div class="separator"></div>
+        
+        <div class="student-info">
+            <div class="student-name">كرار حيدر فليج محسن</div>
+            <div class="school-info">إعدادية كصبية للبنين</div>
+            <div class="school-info">واسط</div>
+            <div class="branch-info">علمي</div>
+            <div class="percentage zero">0</div>
+            <div class="percentage zero">%0</div>
+            <div class="percentage">مبي</div>
+            <div class="logout">تسجيل الخروج (٥)</div>
+        </div>
+        
+        <div class="separator"></div>
+        
+        <div class="study-info">
+            <div class="study-item"><strong>اسم الدراسة</strong></div>
+            <div class="study-item"><strong>الدرسة</strong></div>
+            <div class="study-item"><strong>الفرع</strong></div>
+            <div class="study-item"><strong>المجموعة</strong></div>
+            <div class="study-item"><strong>العدل</strong></div>
+            <div class="study-item"><strong>النتيجة النهائية</strong></div>
+        </div>
+        
+        <div class="footer">
+            جميع الحقوق محفوظة © 2025. وزارة التربية المراقبة
+        </div>
+    </div>
+</body>
+</html>
