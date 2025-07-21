@@ -1,180 +1,212 @@
-‏<!DOCTYPE html>
-‏<html lang="ar" dir="rtl">
-‏<head>
-‏  <meta charset="UTF-8">
-‏  <title>نتيجة الطالب</title>
-‏  <style>
-‏    body {
-‏      font-family: "Segoe UI", Tahoma, sans-serif;
-‏      background-color: #f7fafd;
-‏      margin: 0;
-‏      padding: 0;
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>نتيجة الطالب</title>
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      background-color: #f7fafd;
+      margin: 0;
+      padding: 0;
     }
 
-‏    .container {
-‏      display: flex;
-‏      justify-content: center;
-‏      align-items: flex-start;
-‏      padding: 40px;
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 40px;
     }
 
-‏    .result-box {
-‏      background: #fff;
-‏      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-‏      border-radius: 10px;
-‏      display: flex;
-‏      overflow: hidden;
-‏      gap: 20px; /* الفراغ بين القسمين */
+    .result-box {
+      background: #fff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      display: flex;
+      overflow: hidden;
+      gap: 10px; /* تم تقليل المسافة بين القسمين */
     }
 
-‏    .right, .left {
-‏      padding: 30px;
+    /* Responsive adjustments for smaller screens */
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px;
+      }
+      .result-box {
+        flex-direction: column; /* Stack sections vertically on small screens */
+        gap: 0; /* Remove gap when stacked */
+      }
+      .right {
+        border-right: none; /* Remove right border */
+        border-bottom: 1px solid #ddd; /* Add bottom border */
+      }
+      .left {
+        min-width: unset; /* Remove min-width constraint */
+        width: 100%; /* Take full width */
+        border: none; /* Remove border when stacked vertically */
+      }
     }
 
-‏    .right {
-‏      background-color: #fefefe;
-‏      border-right: 1px solid #ddd;
+    .right, .left {
+      padding: 30px;
     }
 
-‏    .left {
-‏      min-width: 280px;
-‏      background: #fafafa;
+    .right {
+      background-color: #fefefe;
+      border-right: 1px solid #ddd;
     }
 
-‏    .header {
-‏      font-weight: bold;
-‏      font-size: 18px;
-‏      margin-bottom: 20px;
+    .left {
+      min-width: 280px;
+      background: #fff; /* تم تغيير الخلفية إلى الأبيض */
+      border: 1px solid #ddd; /* إضافة إطار للقسم الأيسر */
+      border-radius: 10px; /* لجعل الإطار مستديرًا قليلاً */
     }
 
-‏    .note {
-‏      background-color: #ffe0e0;
-‏      color: #c00;
-‏      padding: 10px;
-‏      font-size: 14px;
-‏      margin-bottom: 20px;
-‏      border-radius: 5px;
+    .header {
+      font-weight: bold;
+      font-size: 18px;
+      margin-bottom: 20px;
     }
 
-‏    table {
-‏      width: 100%;
-‏      border-collapse: collapse;
-‏      font-size: 16px;
+    .note {
+      background-color: #ffe0e0;
+      color: #c00;
+      padding: 10px;
+      font-size: 14px;
+      margin-bottom: 20px;
+      border-radius: 5px;
     }
 
-‏    th, td {
-‏      padding: 8px;
-‏      border-bottom: 1px solid #ddd;
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 16px;
     }
 
-‏    td:last-child {
-‏      text-align: center;
+    th, td {
+      padding: 8px;
+      border-bottom: 1px solid #ddd;
+      text-align: right; /* محاذاة لليمين لرؤوس الأعمدة والبيانات */
     }
 
-‏    .highlight {
-‏      background-color: #ffe6e6;
+    td:last-child {
+      text-align: center; /* محاذاة للوسط لعمود الدرجات */
     }
 
-‏    .info-box p {
-‏      margin: 10px 0;
-‏      font-size: 15px;
+    .highlight {
+      background-color: #ffe6e6;
     }
 
-‏    .info-box strong {
-‏      display: inline-block;
-‏      width: 100px;
+    .info-box p {
+      margin: 10px 0;
+      font-size: 15px;
+      display: flex; /* Use flexbox for alignment */
+      justify-content: space-between; /* Push items to opposite ends */
+      align-items: center;
     }
 
-‏    .final-result {
-‏      font-weight: bold;
-‏      color: red;
-‏      padding: 10px;
-‏      background-color: #ffe0e0;
-‏      width: fit-content;
-‏      border-radius: 5px;
+    .info-box strong {
+      font-weight: normal; /* Make the labels normal weight */
+      color: #777; /* Lighter color for labels */
     }
 
-‏    .btn {
-‏      margin-top: 15px;
-‏      padding: 10px;
-‏      background-color: #eee;
-‏      border: none;
-‏      border-radius: 5px;
-‏      cursor: pointer;
+    .info-value {
+      font-weight: bold; /* Make the values bold */
+      color: #333; /* Darker color for values */
     }
 
-‏    .footer {
-‏      text-align: center;
-‏      margin-top: 20px;
-‏      font-size: 12px;
-‏      color: #777;
+    .final-result {
+      font-weight: bold;
+      color: red; /* Red color for "معيد" */
+      padding: 10px;
+      background-color: #ffe0e0; /* Light red background for "معيد" */
+      width: fit-content;
+      border-radius: 5px;
     }
 
-‏    .top-title {
-‏      font-weight: bold;
-‏      font-size: 16px;
-‏      text-align: center;
-‏      margin-bottom: 15px;
+    .btn {
+      margin-top: 15px;
+      padding: 10px;
+      background-color: #eee;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%; /* Make button full width */
     }
 
-‏    .title-head {
-‏      font-weight: bold;
-‏      font-size: 15px;
-‏      text-align: center;
-‏      margin-bottom: 25px;
-‏      line-height: 1.6;
+    .footer {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 12px;
+      color: #777;
     }
-‏  </style>
-‏</head>
-‏<body>
-‏  <div class="container">
-‏    <div class="result-box">
+
+    .top-title {
+      font-weight: bold;
+      font-size: 16px;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+
+    .title-head {
+      font-weight: bold;
+      font-size: 15px;
+      text-align: center;
+      margin-bottom: 25px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="result-box">
 
       <!-- الجهة اليمنى: المعلومات -->
-‏      <div class="right">
-‏        <div class="top-title">جمهورية العراق<br>وزارة التربية</div>
-‏        <div class="title-head">
+      <div class="right">
+        <div class="top-title">جمهورية العراق<br>وزارة التربية</div>
+        <div class="title-head">
           المنظمة العامة للتحديات العامة<br>
           الدور الأول 2025/2024
-‏        </div>
-‏        <div class="info-box">
-‏          <p><strong>الاسم الرباعي:</strong> كرار حيدر فليح محسن</p>
-‏          <p><strong>اسم المدرسة:</strong> اعدادية كصيبة للبنين</p>
-‏          <p><strong>المديرية:</strong> واسط</p>
-‏          <p><strong>الفرع:</strong> علمي</p>
-‏          <p><strong>المجموعة:</strong> 0</p>
-‏          <p><strong>المعدل:</strong> %0</p>
-‏          <div class="final-result">معيد</div>
-‏          <button class="btn">تسجيل الخروج</button>
-‏        </div>
-‏      </div>
+        </div>
+        <div class="info-box">
+          <p><strong>الاسم الرباعي</strong><span class="info-value">كرار حيدر فليح محسن</span></p>
+          <p><strong>اسم المدرسة</strong><span class="info-value">اعدادية كصيبة للبنين</span></p>
+          <p><strong>المديرية</strong><span class="info-value">واسط</span></p>
+          <p><strong>الفرع</strong><span class="info-value">علمي</span></p>
+          <p><strong>المجموع</strong><span class="info-value">0</span></p>
+          <p><strong>المعدل</strong><span class="info-value">%0</span></p>
+          <div class="final-result">معيد</div>
+          <button class="btn">تسجيل الخروج</button>
+        </div>
+      </div>
 
       <!-- الجهة اليسرى: المواد -->
-‏      <div class="left">
-‏        <div class="header">معلومات النتيجة</div>
-‏        <div class="note">
+      <div class="left">
+        <div class="header">معلومات النتيجة</div>
+        <div class="note">
           ملاحظة: هذه النتيجة لا تُعد وثيقة رسمية، يجب الاعتماد على الوثائق الورقية الصادرة من الوزارة.
-‏        </div>
-‏        <table>
-‏          <tr>
-‏            <th>المادة</th>
-‏            <th>الدرجة</th>
-‏          </tr>
-‏          <tr><td>الإسلامية</td><td>86</td></tr>
-‏          <tr><td>العربية</td><td>78</td></tr>
-‏          <tr class="highlight"><td>الإنجليزية</td><td>م</td></tr>
-‏          <tr><td>الأحياء</td><td>95</td></tr>
-‏          <tr><td>الرياضيات</td><td>90</td></tr>
-‏          <tr><td>الكيمياء</td><td>84</td></tr>
-‏          <tr class="highlight"><td>الفيزياء</td><td>م</td></tr>
-‏        </table>
-‏      </div>
+        </div>
+        <table>
+          <tr>
+            <th>المادة</th>
+            <th>الدرجة</th>
+          </tr>
+          <tr><td>الإسلامية</td><td>86</td></tr>
+          <tr><td>العربية</td><td>78</td></tr>
+          <tr class="highlight"><td>الإنجليزية</td><td>م</td></tr>
+          <tr><td>الأحياء</td><td>95</td></tr>
+          <tr><td>الرياضيات</td><td>90</td></tr>
+          <tr><td>الكيمياء</td><td>84</td></tr>
+          <tr class="highlight"><td>الفيزياء</td><td>م</td></tr> <!-- تم إضافة التظليل هنا -->
+        </table>
+      </div>
 
-‏    </div>
-‏  </div>
+    </div>
+  </div>
 
-‏  <div class="footer">
+  <div class="footer">
     جميع الحقوق محفوظة © 2025 وزارة التربية العراقية
-‏  </div>
-‏</body>
-‏</html>
+  </div>
+</body>
+</html>
